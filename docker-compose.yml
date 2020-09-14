@@ -1,0 +1,26 @@
+
+version: "3.2"
+
+services: 
+    mussy:
+        image: mussy
+        build:
+            context: .
+        ports:
+            - "5000:5000"
+        volumes: 
+            - ./src:/src
+        links:
+            - db
+
+    db:
+        image: mysql
+        restart: always
+        ports:
+            - "3307:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root123
+            MYSQL_DATABASE: mussy_db
+        command: "--innodb_use_native_aio=0"
+        volumes:
+            - .db/mussy_db:/var/lib/mysql
