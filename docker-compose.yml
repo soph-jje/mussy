@@ -5,13 +5,14 @@ services:
     mussy:
         image: mussy
         build:
-            context: .
+            context: ./src
         ports:
             - "5000:5000"
         volumes: 
             - ./src:/src
         links:
             - db
+
 
     db:
         image: mysql
