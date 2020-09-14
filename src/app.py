@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request,redirect
-import requests
+from spotify_routes import spotify_routes
+import requests  
 
 
 app = Flask(__name__)
@@ -7,8 +8,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "hola macaco!"
+    return render_template("home.html")
 
+
+app.register_blueprint(spotify_routes)
+
+    
     
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
