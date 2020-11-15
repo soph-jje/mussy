@@ -11,7 +11,6 @@ class SpotifyClient:
 
     @staticmethod
     def getToken(code:str, redirect_uri:str, client_id:str, client_secret:str):
-
         r = requests.post(
             "https://accounts.spotify.com/api/token",
             data= {"grant_type": "authorization_code", "code": code, "redirect_uri": redirect_uri, "client_id":client_id, "client_secret":client_secret},
